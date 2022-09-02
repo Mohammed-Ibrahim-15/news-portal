@@ -7,8 +7,9 @@ const loadNewsCategory = () => {
 
 const displayNewsCategory = (categories) => {
     const categoriesContainer = document.getElementById('news-category-container')
+
     categories.forEach(category => {
-        console.log(category);
+        // console.log(category);
         const categoriesDiv = document.createElement('div')
         categoriesDiv.innerHTML = `
         <a onclick="loadCategoryDetails(${category.category_id})" id="categories" class="btn btn-outline-primary">${category.category_name} </a>
@@ -26,9 +27,10 @@ const loadCategoryDetails = (categoryId) => {
 }
 
 const displayCategoryDetails = (newses) => {
-    console.log(newses)
+    // console.log(newses)
     const newsContainer = document.getElementById('news-container')
     newsContainer.textContent = ``;
+
     newses.forEach(news => {
         const newsDiv = document.createElement('div')
         newsDiv.innerHTML = `
@@ -76,7 +78,7 @@ const displayNewsDetails = (newsId) => {
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <p class="fs-6 text-black-50">${news.details}</p>
+            <p class="fs-6 text-black-50">${news.details.slice(0, 600)}</p>
             <div class="d-flex justify-content-between align-items-center">
             <div>
             <img class="rounded-circle me-2" style="height: 50px; width: 50px;" src="${news.author.img}" alt="">
@@ -85,9 +87,10 @@ const displayNewsDetails = (newsId) => {
             <a class=""><i class="fa-solid fa-eye mx-1"></i>${news.total_view}</a>
             <a class="me-3">Rating: ${news.rating ? news.rating.number : 'No Data Found'}<i class="ms-1 fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></a>
        </div>
-          
+       <p class="mt-3 fs-6 text-black-50 text-center">Published Date: ${news.author.published_date} </p>      
         </div>
         <div class="modal-footer">
+       
         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
         </div>
 
