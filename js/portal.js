@@ -32,9 +32,20 @@ const displayCategoryDetails = (newses) => {
     newses.forEach(news => {
         const newsDiv = document.createElement('div')
         newsDiv.innerHTML = `
-        <div>
-        <img src="${news.image_url} ">
+        <div class="col-sm-12 col-lg-12 border bg-light d-flex align-items-center">
+        <div><img src="${news.thumbnail_url} " class="img-fluid me-3" alt=""></div>
+        <div class="ms-3 mt-2">
+            <div>
+                <h5 class="fw-bold">${news.title}</h5>
+                <p class="fs-6 text-black-50">${news.details.slice(0, 100)}</p>
+            </div>
+            <div>
+            <img class="rounded-circle m-2" style="height: 50px; width: 50px;" src="${news.author.img}" alt="">
+    
+            <a> ${news.author.name}</a>
+            </div>
         </div>
+    </div>
         `
         newsContainer.appendChild(newsDiv)
     })
