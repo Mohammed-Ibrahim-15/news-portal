@@ -39,10 +39,13 @@ const displayCategoryDetails = (newses) => {
                 <h5 class="fw-bold">${news.title}</h5>
                 <p class="fs-6 text-black-50">${news.details.slice(0, 100)}</p>
             </div>
-            <div>
-            <img class="rounded-circle m-2" style="height: 50px; width: 50px;" src="${news.author.img}" alt="">
-    
-            <a> ${news.author.name}</a>
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+              <img class="rounded-circle me-2" style="height: 50px; width: 50px;" src="${news.author.img}" alt="">
+              <a> ${news.author.name}</a>
+              </div>
+             <a class=""><i class="fa-solid fa-eye mx-1"></i>${news.total_view}</a>
+             <a>Rating: ${news.rating.number}<i class="ms-1 fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></a>
             </div>
         </div>
     </div>
