@@ -35,11 +35,11 @@ const displayCategoryDetails = (newses) => {
         const newsDiv = document.createElement('div')
         newsDiv.innerHTML = `
         <div onclick="loadNewsDetails('${news._id}')" data-bs-toggle="modal" data-bs-target="#newsModal" class="col-sm-12 col-lg-12 border bg-light d-flex align-items-center">
-        <div><img src="${news.thumbnail_url} " class="img-fluid me-3" alt=""></div>
-        <div class="ms-3 mt-2">
+        <div><img src="${news.thumbnail_url} " class="img-fixed me-3" alt=""></div>
+        <div class="w-75 ms-3 mt-2">
             <div>
                 <h5 class="fw-bold">${news.title}</h5>
-                <p class="fs-6 text-black-50">${news.details.slice(0, 200)}</p>
+                <p class="fs-6 text-black-50 col-3 text-truncate">${news.details}</p>
             </div>
             <div class="d-flex justify-content-between align-items-center">
               <div>
@@ -87,7 +87,7 @@ const displayNewsDetails = (newsId) => {
             <a class=""><i class="fa-solid fa-eye mx-1"></i>${news.total_view}</a>
             <a class="me-3">Rating: ${news.rating ? news.rating.number : 'No Data Found'}<i class="ms-1 fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></a>
        </div>
-       <p class="mt-3 fs-6 text-black-50 text-center">Published Date: ${news.author.published_date} </p>      
+       <p class="mt-3 fs-6 text-black text-center">Published Date: ${news.author.published_date} </p>      
         </div>
         <div class="modal-footer">
        
@@ -99,6 +99,5 @@ const displayNewsDetails = (newsId) => {
     })
 
 }
-
 
 loadNewsCategory();
