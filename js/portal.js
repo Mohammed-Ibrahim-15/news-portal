@@ -1,10 +1,13 @@
+// Load News Category
 const loadNewsCategory = () => {
     const url = 'https://openapi.programming-hero.com/api/news/categories'
     fetch(url)
         .then(res => res.json())
         .then(data => displayNewsCategory(data.data.news_category))
+        .catch(error => console.log(error))
 }
 
+// Display News Category
 const displayNewsCategory = (categories) => {
     const categoriesContainer = document.getElementById('news-category-container')
 
@@ -18,14 +21,17 @@ const displayNewsCategory = (categories) => {
     })
 }
 
+// Load Category-Wise News
 const loadCategoryDetails = (categoryId) => {
     const url = `https://openapi.programming-hero.com/api/news/category/0${categoryId}`
     fetch(url)
         .then(res => res.json())
         .then(data => displayCategoryDetails(data.data))
+        .catch(error => console.log(error))
 
 }
 
+// Display Category-Wise News
 const displayCategoryDetails = (newses) => {
     // console.log(newses)
     const newsContainer = document.getElementById('news-container')
@@ -56,29 +62,32 @@ const displayCategoryDetails = (newses) => {
     })
 }
 
+// Load News Details For Modal
 const loadNewsDetails = (newsId) => {
     const url = `https://openapi.programming-hero.com/api/news/${newsId}`
     fetch(url)
         .then(res => res.json())
         .then(data => displayNewsDetails(data.data))
+        .catch(error => console.log(error))
 }
 
+// Load News Details in Modal
 const displayNewsDetails = (newsId) => {
 
     const newsIdContainer = document.getElementById('news-id-container')
     newsIdContainer.textContent = ``;
     newsId.forEach(news => {
-        console.log(news)
+        // console.log(news)
         const newsIdDiv = document.createElement('div')
         newsIdDiv.classList.add('modal-content')
         newsIdDiv.innerHTML = `
         
         <div class="modal-header">
-        <h5 class="modal-title" id="newsModalLabel">${news.title} </h5>
+        <h5 class="modal-title fw-semibold fst-italic" id="newsModalLabel">${news.title} </h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <p class="fs-6 text-black-50">${news.details.slice(0, 600)}</p>
+            <p class="fs-6 text-black">${news.details.slice(0, 600)}</p>
             <div class="d-flex justify-content-between align-items-center">
             <div>
             <img class="rounded-circle me-2" style="height: 50px; width: 50px;" src="${news.author.img}" alt="">
@@ -87,7 +96,7 @@ const displayNewsDetails = (newsId) => {
             <a class=""><i class="fa-solid fa-eye mx-1"></i>${news.total_view}</a>
             <a class="me-3">Rating: ${news.rating ? news.rating.number : 'No Data Found'}<i class="ms-1 fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></a>
        </div>
-       <p class="mt-3 fs-6 text-black text-center">Published Date: ${news.author.published_date} </p>      
+       <p class="mt-3 fs-6 text-black text-center fst-italic">Published Date: ${news.author.published_date} </p>      
         </div>
         <div class="modal-footer">
        
@@ -100,4 +109,6 @@ const displayNewsDetails = (newsId) => {
 
 }
 
+
+// Call News Category In Top
 loadNewsCategory();
