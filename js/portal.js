@@ -40,6 +40,28 @@ const displayCategoryDetails = (newses) => {
     const newsContainer = document.getElementById('news-container')
     newsContainer.textContent = ``;
 
+    // Show Number Of News
+    const newsItemContainer = document.getElementById('news-item-container')
+    newsItemContainer.textContent = ``;
+    const newsItem = newses.length
+
+    console.log(newsItem)
+    if (newsItem > 0) {
+        const newsItemDiv = document.createElement('div')
+        newsItemContainer.classList.remove('d-none')
+        newsItemDiv.innerHTML = `
+        <p class="shadow p-3 my-3 bg-body rounded text-center fw-semibold">Total Number Of News Available: ${newsItem}</p>
+        `
+        newsContainer.appendChild(newsItemDiv)
+    }
+
+    else {
+        const newsItemDiv = document.createElement('div')
+        newsItemContainer.classList.remove('d-none')
+        newsItemDiv.innerHTML = `<p class="shadow p-3 my-3 bg-body rounded text-center fw-semibold text-danger">There is No News Available ${newsItem}</p>`
+        newsContainer.appendChild(newsItemDiv)
+    }
+
     newses.forEach(news => {
         const newsDiv = document.createElement('div')
         newsDiv.innerHTML = `
