@@ -70,7 +70,7 @@ const displayCategoryDetails = (newses) => {
     }
 
     newses.forEach(news => {
-        console.log(news.author)
+        // console.log(news)
 
         const newsDiv = document.createElement('div')
 
@@ -85,10 +85,10 @@ const displayCategoryDetails = (newses) => {
             <div class="d-flex justify-content-between align-items-center">
               <div>
               <img class="rounded-circle me-2" style="height: 50px; width: 50px;" src="${news.author.img}" alt="">
-              <a> ${(news.author.name === null || news.author.name === "" ? 'No Data Found' : news.author.name)}</a>
+              <a> ${(news.author.name === null || news.author.name === "" ? 'No Data Available' : news.author.name)}</a>
               </div>
-             <a class=""><i class="fa-solid fa-eye mx-1"></i>${news.total_view === null || news.total_view === 0 ? 'No Data Found' : news.total_view}</a>
-             <a class="me-3">Rating: ${news.rating.number === null || news.rating.number === 0 ? "No Data Found" : news.rating.number}<i class="ms-1 fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></a>
+             <a class=""><i class="fa-solid fa-eye mx-1"></i>${news.total_view === null || news.total_view === 0 ? 'No Data Available' : news.total_view}</a>
+             <a class="me-3">Rating: ${news.rating.number === null || news.rating.number === 0 ? "No Data Available" : news.rating.number}<i class="ms-1 fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></a>
             </div>
         </div>
     </div>
@@ -138,12 +138,12 @@ const displayNewsDetails = (newsId) => {
             <div class="d-flex justify-content-between align-items-center">
             <div>
             <img class="rounded-circle me-2" style="height: 50px; width: 50px;" src="${news.author.img}" alt="">
-            <a> ${news.author.name === null || news.author.name === "" ? 'No Data Found' : news.author.name}</a>
+            <a> ${news.author.name === null || news.author.name === "" ? 'No Data Available' : news.author.name}</a>
             </div>
-            <a class=""><i class="fa-solid fa-eye mx-1"></i>${news.total_view === null || news.total_view === 0 ? "No Data Found" : news.total_view}</a>
-    <a class="me-3">Rating: ${news.rating.number === null || news.rating.number === 0 ? 'No Data Found' : news.rating.number}<i class="ms-1 fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></a>
+            <a class=""><i class="fa-solid fa-eye mx-1"></i>${news.total_view === null || news.total_view === 0 ? "No Data Available" : news.total_view}</a>
+    <a class="me-3">Rating: ${news.rating.number === null || news.rating.number === 0 ? 'No Data Available' : news.rating.number}<i class="ms-1 fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></a>
        </div >
-    <p class="mt-3 fs-6 text-black text-center fst-italic">Published Date: ${news.author.published_date} </p>      
+    <p class="mt-3 fs-6 text-black text-center fst-italic">Published Date: ${news.author.published_date === null || news.author.published_date === 0 ? 'No Data Available' : news.author.published_date} </p>      
         </div >
     <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
