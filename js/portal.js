@@ -36,7 +36,15 @@ const loadCategoryDetails = (categoryId) => {
 
 // Display Category-Wise News
 const displayCategoryDetails = (newses) => {
+
     // console.log(newses)
+
+    // Sorting Function (Greater to Smaller)
+
+    newses.sort(function (a, b) {
+        return b.total_view - a.total_view;
+    });
+
     const newsContainer = document.getElementById('news-container')
     newsContainer.textContent = ``;
 
@@ -45,7 +53,7 @@ const displayCategoryDetails = (newses) => {
     newsItemContainer.textContent = ``;
     const newsItem = newses.length
 
-    console.log(newsItem)
+    // console.log(newsItem)
     if (newsItem > 0) {
         const newsItemDiv = document.createElement('div')
         newsItemContainer.classList.remove('d-none')
@@ -63,7 +71,10 @@ const displayCategoryDetails = (newses) => {
     }
 
     newses.forEach(news => {
+        // console.log(news)
+
         const newsDiv = document.createElement('div')
+
         newsDiv.innerHTML = `
         <div onclick="loadNewsDetails('${news._id}')" data-bs-toggle="modal" data-bs-target="#newsModal" class="col-sm-12 col-lg-12 border bg-light d-flex align-items-center">
         <div><img src="${news.thumbnail_url} " class="img-fixed me-3" alt=""></div>
@@ -130,13 +141,12 @@ const displayNewsDetails = (newsId) => {
             <img class="rounded-circle me-2" style="height: 50px; width: 50px;" src="${news.author.img}" alt="">
             <a> ${news.author ? news.author.name : 'No Data Found'}</a>
             </div>
-            <a class=""><i class="fa-solid fa-eye mx-1"></i>${news.total_view}</a>
+            <a class=""><i class="fa-solid fa-eye mx-1"></i>${news ? news.total_view : "No Data Found"}</a>
             <a class="me-3">Rating: ${news.rating ? news.rating.number : 'No Data Found'}<i class="ms-1 fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></a>
        </div>
        <p class="mt-3 fs-6 text-black text-center fst-italic">Published Date: ${news.author.published_date} </p>      
         </div>
-        <div class="modal-footer">
-       
+        <div class="modal-footer">       
         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
         </div>
 
@@ -145,7 +155,6 @@ const displayNewsDetails = (newsId) => {
     })
 
 }
-
 
 // Call News Category In Top
 loadNewsCategory();
