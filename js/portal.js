@@ -50,7 +50,7 @@ const displayCategoryDetails = (newses) => {
         const newsItemDiv = document.createElement('div')
         newsItemContainer.classList.remove('d-none')
         newsItemDiv.innerHTML = `
-        <p class="shadow p-3 my-3 bg-body rounded text-center fw-semibold">Total Number Of News Available: ${newsItem}</p>
+        <p class="shadow p-3 my-2 bg-body rounded text-center fw-semibold">Total Number Of News Available: ${newsItem}</p>
         `
         newsContainer.appendChild(newsItemDiv)
     }
@@ -58,7 +58,7 @@ const displayCategoryDetails = (newses) => {
     else {
         const newsItemDiv = document.createElement('div')
         newsItemContainer.classList.remove('d-none')
-        newsItemDiv.innerHTML = `<p class="shadow p-3 my-3 bg-body rounded text-center fw-semibold text-danger">There is No News Available ${newsItem}</p>`
+        newsItemDiv.innerHTML = `<p class="shadow p-3 my-2 bg-body rounded text-center fw-semibold text-danger">There is No News Available ${newsItem}</p>`
         newsContainer.appendChild(newsItemDiv)
     }
 
