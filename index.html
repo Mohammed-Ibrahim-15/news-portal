@@ -30,8 +30,6 @@
                     <div class="d-flex">
                         <a class="btn btn-outline-primary me-2" href="index.html" type="submit">News</a>
                         <a class="btn btn-outline-primary" href="blog.html" type="submit">Blog</a>
-
-
                     </div>
                 </div>
             </div>
@@ -39,20 +37,36 @@
     </header>
     <hr>
     <main>
-        <section>
-            <!-- Modal Section-->
-            <div class="modal fade" id="newsModal" tabindex="-1" aria-labelledby="newsModalLabel" aria-hidden="true">
-                <div id="news-id-container" class="modal-dialog">
+        <!-- Modal Section-->
+        <div class="modal fade" id="newsModal" tabindex="-1" aria-labelledby="newsModalLabel" aria-hidden="true">
+            <div id="news-id-container" class="modal-dialog">
 
-                </div>
             </div>
+        </div>
         </section>
 
         <!-- Category Section -->
         <section>
-            <div id="news-category-container" class="d-flex justify-content-around">
 
-            </div>
+            <nav class="navbar navbar-expand-lg bg-light">
+                <div class="container-fluid">
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContentCategory" aria-controls="navbarSupportedContentCategory"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse navbar-nav me-auto mb-2 mb-lg-0"
+                        id="navbarSupportedContentCategory">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 mb-sm-12">
+                        </ul>
+                        <div id="news-category-container" class="d-flex justify-content-around">
+
+                        </div>
+
+                    </div>
+                </div>
+            </nav>
         </section>
 
         <!-- Spinner Section -->

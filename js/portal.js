@@ -16,7 +16,7 @@ const displayNewsCategory = (categories) => {
         // console.log(category);
         const categoriesDiv = document.createElement('div')
         categoriesDiv.innerHTML = `
-        <button onclick="loadCategoryDetails(${category.category_id})" id="categories" class="btn btn-outline-primary">${category.category_name} </button>
+        <button onclick="loadCategoryDetails(${category.category_id})" id="categories" class="mx-3 btn btn-outline-primary">${category.category_name} </button>
         `
         categoriesContainer.appendChild(categoriesDiv)
     })
