@@ -1,6 +1,7 @@
 // Load News Category
 const loadNewsCategory = () => {
     const url = 'https://openapi.programming-hero.com/api/news/categories'
+
     fetch(url)
         .then(res => res.json())
         .then(data => displayNewsCategory(data.data.news_category))
@@ -15,7 +16,7 @@ const displayNewsCategory = (categories) => {
         // console.log(category);
         const categoriesDiv = document.createElement('div')
         categoriesDiv.innerHTML = `
-        <a onclick="loadCategoryDetails(${category.category_id})" id="categories" class="btn btn-outline-primary">${category.category_name} </a>
+        <button onclick="loadCategoryDetails(${category.category_id})" id="categories" class="btn btn-outline-primary">${category.category_name} </button>
         `
         categoriesContainer.appendChild(categoriesDiv)
     })
@@ -23,7 +24,9 @@ const displayNewsCategory = (categories) => {
 
 // Load Category-Wise News
 const loadCategoryDetails = (categoryId) => {
+    toggleSpinner(true)
     const url = `https://openapi.programming-hero.com/api/news/category/0${categoryId}`
+
     fetch(url)
         .then(res => res.json())
         .then(data => displayCategoryDetails(data.data))
@@ -45,7 +48,7 @@ const displayCategoryDetails = (newses) => {
         <div class="w-75 ms-3 mt-2">
             <div>
                 <h5 class="fw-bold">${news.title}</h5>
-                <p class="fs-6 text-black-50 col-3 text-truncate">${news.details}</p>
+                <p class="fs-6 text-black-50 col-10 text-truncate">${news.details}</p>
             </div>
             <div class="d-flex justify-content-between align-items-center">
               <div>
@@ -53,13 +56,25 @@ const displayCategoryDetails = (newses) => {
               <a> ${news.author ? news.author.name : 'No Data Found'}</a>
               </div>
              <a class=""><i class="fa-solid fa-eye mx-1"></i>${news.total_view}</a>
-             <a class="me-3">Rating: ${news.rating ? news.rating.number : 'No Data Found'}<i class="ms-1 fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></a>
+             <a class="me-3">Rating: ${news.rating ? news.rating.number : "No Data Found"}<i class="ms-1 fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></a>
             </div>
         </div>
     </div>
         `
         newsContainer.appendChild(newsDiv)
     })
+    toggleSpinner(false)
+}
+
+// Spinner Part
+const toggleSpinner = isLoading => {
+    const loaderSection = document.getElementById('loader')
+    if (isLoading) {
+        loaderSection.classList.remove('d-none')
+    }
+    else {
+        loaderSection.classList.add('d-none')
+    }
 }
 
 // Load News Details For Modal
@@ -71,7 +86,7 @@ const loadNewsDetails = (newsId) => {
         .catch(error => console.log(error))
 }
 
-// Load News Details in Modal
+// Display News Details in Modal
 const displayNewsDetails = (newsId) => {
 
     const newsIdContainer = document.getElementById('news-id-container')
